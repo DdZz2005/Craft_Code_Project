@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 import com.example.craft_code_mobile_project.databinding.ActivityLoginBinding
-import com.example.myapplication.RegistrationActivity
+
 
 
 class LoginActivity : AppCompatActivity() {
