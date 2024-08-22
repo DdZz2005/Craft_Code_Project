@@ -1,6 +1,7 @@
 package com.example.craft_code_mobile_project
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +13,9 @@ class ScanActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Установка вертикальной ориентации
-        requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        // Принудительная установка ориентации экрана в портретную
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
 
         // Запуск сканера
         val integrator = IntentIntegrator(this)
@@ -22,20 +24,26 @@ class ScanActivity : AppCompatActivity() {
         integrator.setCameraId(0)
         integrator.setBeepEnabled(true)
         integrator.setBarcodeImageEnabled(true)
+        integrator.setOrientationLocked(true)
         integrator.initiateScan()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val result: IntentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-        if (result.contents == null) {
-            Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
-        } else {
-            // Передача результата сканирования в следующую активность
-            val intent = Intent(this, ActionWhithTheQrActivity::class.java)
-            intent.putExtra("QR_CODE", result.contents)
+
+        val scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        if (scanResult.contents != null) {
+            // Переход к следующей активности с результатом сканирования
+            val intent = Intent(this, ActionWhithTheQrActivity::class.java).apply {
+                putExtra("QR_CODE", scanResult.contents)
+            }
             startActivity(intent)
+        } else {
+            // Если сканирование было отменено
+            Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
         }
-        finish()
+
+        finish() // Завершаем текущую активность
     }
+
 }

@@ -44,8 +44,16 @@
 
         <activity
             android:name=".ScanActivity"
-            android:exported="false" />
-        <activity android:name=".ActionWhithTheQrActivity"></activity>
+            android:screenOrientation="portrait"
+            tools:replace="android:screenOrientation"
+            android:configChanges="orientation|screenSize"
+            android:stateNotNeeded="true"
+            />
+        <activity
+            android:name=".ActionWhithTheQrActivity"
+        />
+
+        <activity android:name=".AccountDetailsActivity"></activity>
 
     </application>
 

@@ -1,35 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/search"
-        android:title="Search"
-        android:icon="@drawable/baseline_search_24"
-        app:showAsAction="always"
-        android:contentDescription="SEARCH"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-        tools:ignore="HardcodedText" />
+    <!-- Кнопка гамбургер для бокового меню -->
     <item
-        android:id="@+id/scan"
-        android:title="Scan"
-        android:icon="@drawable/round_add_a_photo_24"
-        app:showAsAction="always"
-        android:contentDescription="SCAN"
-        tools:ignore="HardcodedText" />
-    <item
-        android:id="@+id/assignment"
-        android:title="Assignment"
-        android:icon="@drawable/baseline_assignment_24"
-        app:showAsAction="always"
-        android:contentDescription="ASSIGNMENT"
-        tools:ignore="HardcodedText" />
-    <item
-        android:id="@+id/More"
-        android:title="More"
+        android:id="@+id/action_menu"
+        android:title="Menu"
         android:icon="@drawable/baseline_article_24"
         app:showAsAction="always"
-        android:contentDescription="MORE"
-        tools:ignore="HardcodedText" />
+        android:contentDescription="menu_desc"
+        android:orderInCategory="100">
+        <menu>
+            <item
+                android:id="@+id/account_details"
+                android:title="Данные учётной записи"
+                android:contentDescription="account_details_desc"/>
+            <item
+                android:id="@+id/company_details"
+                android:title="Данные компании"
+                android:contentDescription="company_details_desc"/>
+        </menu>
+    </item>
 
+    <!-- Иконка документа -->
+    <item
+        android:id="@+id/action_document"
+        android:icon="@drawable/baseline_assignment_24"
+        app:showAsAction="always"
+        android:contentDescription="document_desc"
+        android:title="TODO" />
+
+    <!-- Иконка камеры -->
+    <item
+        android:id="@+id/action_camera"
+        android:icon="@drawable/round_add_a_photo_24"
+        app:showAsAction="always"
+        android:contentDescription="camera_desc"
+        android:title="Сканирование" />
+
+    <!-- Иконка поиска -->
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/baseline_search_24"
+        app:showAsAction="always"
+        android:contentDescription="search_desc"
+        android:title="TODO" />
 </menu>
