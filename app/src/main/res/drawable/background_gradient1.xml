@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item >
+    <!-- Градиент поверх изображения -->
+    <item>
         <shape>
             <gradient
                 android:angle="90"
-                android:startColor="#FF40F0"
-                android:endColor="#8A2BE0"
+                android:startColor="#CB16D2"
+                android:endColor="#8005BA"
                 android:type="linear" />
         </shape>
     </item>
 </layer-list>
-

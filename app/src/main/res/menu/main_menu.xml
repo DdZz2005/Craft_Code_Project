@@ -7,7 +7,7 @@
     <item
         android:id="@+id/action_menu"
         android:title="Menu"
-        android:icon="@drawable/baseline_article_24"
+        android:icon="@drawable/img_4"
         app:showAsAction="always"
         android:contentDescription="menu_desc"
         android:orderInCategory="100">
@@ -26,7 +26,7 @@
     <!-- Иконка документа -->
     <item
         android:id="@+id/action_document"
-        android:icon="@drawable/baseline_assignment_24"
+        android:icon="@drawable/img_3"
         app:showAsAction="always"
         android:contentDescription="document_desc"
         android:title="TODO" />
@@ -34,7 +34,7 @@
     <!-- Иконка камеры -->
     <item
         android:id="@+id/action_camera"
-        android:icon="@drawable/round_add_a_photo_24"
+        android:icon="@drawable/img_2"
         app:showAsAction="always"
         android:contentDescription="camera_desc"
         android:title="Сканирование" />
@@ -42,7 +42,7 @@
     <!-- Иконка поиска -->
     <item
         android:id="@+id/action_search"
-        android:icon="@drawable/baseline_search_24"
+        android:icon="@drawable/img_1"
         app:showAsAction="always"
         android:contentDescription="search_desc"
         android:title="TODO" />

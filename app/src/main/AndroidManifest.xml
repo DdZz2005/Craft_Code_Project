@@ -54,6 +54,7 @@
         />
 
         <activity android:name=".AccountDetailsActivity"></activity>
+        <activity android:name=".CompanyDetailsActivity"></activity>
 
     </application>
 

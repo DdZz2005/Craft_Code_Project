@@ -8,17 +8,29 @@
     android:background="@drawable/background_gradient1"
     tools:context=".RegistrationActivity">
 
+    <ImageView
+        android:id="@+id/my_image_view"
+        android:layout_width="410dp"
+        android:layout_height="341dp"
+        android:layout_marginTop="12dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tvRegistrationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="132dp"
         android:text="Регистрация"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/black"
         android:textSize="32sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,15 +49,17 @@
 
     <Spinner
         android:id="@+id/spinnerRole"
-        android:layout_width="333dp"
+        android:layout_width="378dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="76dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_edit_text_white"
         android:entries="@array/roles_array"
+        android:spinnerMode="dialog"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etConfirmPassword" />
 
@@ -53,13 +67,13 @@
         android:id="@+id/etPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/rounded_edit_text_white"
         android:hint="Пароль"
         android:inputType="textPassword"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etEmail"
         app:layout_constraintWidth_percent="0.8" />
@@ -68,11 +82,12 @@
         android:id="@+id/etConfirmPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="52dp"
         android:text="Подтвердите пароль"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etPassword"
         app:layout_constraintWidth_percent="0.8" />
@@ -87,6 +102,7 @@
         android:inputType="textPassword"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etEmail"
         app:layout_constraintWidth_percent="0.8" />
@@ -135,7 +151,7 @@
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="275dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:layout_marginTop="28dp"
         android:backgroundTint="#AF0FF0"
         android:onClick="onClick"

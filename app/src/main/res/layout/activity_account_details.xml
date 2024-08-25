@@ -1,63 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".AccountDetailsActivity"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="4dp">
+    tools:context=".AccountDetailsActivity">
 
+    <!-- AppBar layout for using Toolbar as AppBar -->
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
+        android:background="#F2D7FF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#8728F4"
-            app:contentInsetEnd="0dp"
-            app:contentInsetStart="0dp"
-            app:menu="@menu/main_menu"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <!-- Метки и поля ввода -->
-
+    <!-- Заголовок страницы -->
     <TextView
-        android:id="@+id/account_title"
+        android:id="@+id/page_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="16dp"
         android:text="Данные учётной записи"
         android:textColor="#4A154B"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
+    <!-- Поля ввода и метки -->
     <TextView
-        android:id="@+id/family_label"
+        android:id="@+id/label_family_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
         android:text="Фамилия:"
-        android:textColor="#4A154B"
         android:textSize="16sp"
+        android:textColor="#4A154B"
+        app:layout_constraintTop_toBottomOf="@id/page_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/account_title" />
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"/>
 
     <EditText
-        android:id="@+id/family_input"
+        android:id="@+id/input_family_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -69,22 +59,24 @@
         android:textColor="#4A154B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/family_label" />
+        app:layout_constraintTop_toBottomOf="@id/label_family_name" />
+
+    <!-- Поле Имя -->
 
     <TextView
-        android:id="@+id/name_label"
+        android:id="@+id/label_first_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="Имя:"
         android:textColor="#4A154B"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/family_input" />
+        app:layout_constraintTop_toBottomOf="@id/input_family_name" />
 
     <EditText
-        android:id="@+id/name_input"
+        android:id="@+id/input_first_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -96,22 +88,24 @@
         android:textColor="#4A154B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name_label" />
+        app:layout_constraintTop_toBottomOf="@id/label_first_name" />
+
+    <!-- Поле Отчество -->
 
     <TextView
-        android:id="@+id/patronymic_label"
+        android:id="@+id/label_patronymic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Отчество:"
         android:textColor="#4A154B"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name_input" />
+        app:layout_constraintTop_toBottomOf="@id/input_first_name" />
 
     <EditText
-        android:id="@+id/patronymic_input"
+        android:id="@+id/input_patronymic"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -123,22 +117,24 @@
         android:textColor="#4A154B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/patronymic_label" />
+        app:layout_constraintTop_toBottomOf="@id/label_patronymic" />
+
+    <!-- Поле Email -->
 
     <TextView
-        android:id="@+id/email_label"
+        android:id="@+id/label_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:text="Адрес электронной почты:"
         android:textColor="#4A154B"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/patronymic_input" />
+        app:layout_constraintTop_toBottomOf="@id/input_patronymic" />
 
     <EditText
-        android:id="@+id/email_input"
+        android:id="@+id/input_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -150,60 +146,94 @@
         android:textColor="#4A154B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email_label" />
+        app:layout_constraintTop_toBottomOf="@id/label_email" />
+
+    <!-- Поле Номер телефона -->
 
     <TextView
-        android:id="@+id/phone_label"
+        android:id="@+id/label_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Номер телефона:"
         android:textColor="#4A154B"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email_input" />
+        app:layout_constraintTop_toBottomOf="@id/input_email" />
 
     <EditText
-        android:id="@+id/phone_input"
+        android:id="@+id/input_phone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:hint="Номер телефона"
         android:background="@drawable/rounded_text_purple"
+        android:hint="Номер телефона"
         android:padding="12dp"
         android:textColor="#4A154B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/phone_label" />
+        app:layout_constraintTop_toBottomOf="@id/label_phone" />
+
+    <!-- Поле Роль -->
 
     <TextView
-        android:id="@+id/role_label"
+        android:id="@+id/label_role"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
         android:text="Роль:"
         android:textColor="#4A154B"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/phone_input" />
+        app:layout_constraintTop_toBottomOf="@id/input_phone" />
 
     <EditText
-        android:id="@+id/role_input"
+        android:id="@+id/input_role"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:hint="Администратор"
-        android:padding="12dp"
         android:background="@drawable/rounded_text_purple"
+        android:hint="Сотрудник"
+        android:padding="12dp"
         android:textColor="#4A154B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_role" />
+
+    <!-- Кнопка "Готово" -->
+
+    <Button
+        android:id="@+id/button_submit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#C864F7"
+        android:text="Готово"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/role_label" />
+        app:layout_constraintTop_toBottomOf="@id/input_role" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#F2D7FF"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextColor="#4A154B"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

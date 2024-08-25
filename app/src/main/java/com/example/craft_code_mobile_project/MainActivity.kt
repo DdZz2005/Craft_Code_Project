@@ -40,7 +40,8 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.company_details -> {
-                // Открытие страницы "Данные компании"
+                val intent = Intent(this, CompanyDetailsActivity::class.java)
+                startActivity(intent)
                 true
             }
             R.id.action_document -> {

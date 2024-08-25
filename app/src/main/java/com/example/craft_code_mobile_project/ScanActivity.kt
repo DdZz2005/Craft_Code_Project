@@ -1,49 +1,49 @@
 package com.example.craft_code_mobile_project
 
-import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.zxing.integration.android.IntentIntegrator
-import com.google.zxing.integration.android.IntentResult
+import com.journeyapps.barcodescanner.CompoundBarcodeView
+import com.journeyapps.barcodescanner.BarcodeCallback
+import com.journeyapps.barcodescanner.BarcodeResult
 
 class ScanActivity : AppCompatActivity() {
 
+    private lateinit var barcodeView: CompoundBarcodeView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_scan)  // Убедитесь, что путь к вашему XML правильный
 
-        // Принудительная установка ориентации экрана в портретную
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        // Инициализация CompoundBarcodeView
+        barcodeView = findViewById(R.id.barcode_scanner)
 
 
-        // Запуск сканера
-        val integrator = IntentIntegrator(this)
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
-        integrator.setPrompt("Scan a QR code")
-        integrator.setCameraId(0)
-        integrator.setBeepEnabled(true)
-        integrator.setBarcodeImageEnabled(true)
-        integrator.setOrientationLocked(true)
-        integrator.initiateScan()
+        // Запуск непрерывного сканирования
+        barcodeView.decodeContinuous(callback)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        val scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-        if (scanResult.contents != null) {
-            // Переход к следующей активности с результатом сканирования
-            val intent = Intent(this, ActionWhithTheQrActivity::class.java).apply {
-                putExtra("QR_CODE", scanResult.contents)
+    // Callback для обработки результатов сканирования
+    private val callback = object : BarcodeCallback {
+        override fun barcodeResult(result: BarcodeResult?) {
+            result?.let {
+                // Обработка результата сканирования
+                val qrCodeContent = result.text
+                // Действия после сканирования, например, показать уведомление или перейти на другую активность
             }
-            startActivity(intent)
-        } else {
-            // Если сканирование было отменено
-            Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
         }
 
-        finish() // Завершаем текущую активность
+        override fun possibleResultPoints(resultPoints: List<com.google.zxing.ResultPoint>) {
+            // Необязательная обработка возможных точек результата
+        }
     }
 
+    override fun onResume() {
+        super.onResume()
+        barcodeView.resume() // Возобновляем сканирование при возврате к активности
+    }
+
+    override fun onPause() {
+        super.onPause()
+        barcodeView.pause() // Приостанавливаем сканирование, когда активность на паузе
+    }
 }
