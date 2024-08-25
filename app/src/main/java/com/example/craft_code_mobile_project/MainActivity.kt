@@ -12,21 +12,32 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    companion object {
-        private const val CAMERA_PERMISSION_CODE = 100
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Инициализация ToolBar
-        val toolbar: Toolbar = binding.toolbar
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        supportActionBar?.title = "User"
+        // Установка Toolbar
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.title=""
+
+        // Установка макета меню в Toolbar
+        binding.toolbar.inflateMenu(R.menu.main_menu)
+
+        // Получение меню из Toolbar
+        val menu = binding.toolbar.menu
+
+        // Добавление MenuItem программно, используя равные веса (layout_weight)
+        for (i in 0 until menu.size()) {
+            val menuItem = menu.getItem(i)
+            val itemView = menuItem.actionView ?: continue
+
+            // Установка LayoutParams для равномерного распределения
+            val params = Toolbar.LayoutParams(0, Toolbar.LayoutParams.MATCH_PARENT)
+            itemView.layoutParams = params
+        }
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
@@ -61,7 +72,8 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.action_search -> {
-                // Действие при нажатии на иконку поиска
+                val intent = Intent(this, SearchActivity::class.java)
+                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)

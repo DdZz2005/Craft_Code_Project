@@ -4,23 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF8F0"
     tools:context=".MainActivity">
 
+    <!-- Custom Toolbar with LinearLayout -->
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
+        android:background="#F2D7FF"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#8728F4"
-            app:contentInsetStart="0dp"
-            app:contentInsetEnd="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#F2D7FF"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:menu="@menu/main_menu" />
+            app:contentInsetStartWithNavigation="0dp"
+            tools:ignore="DuplicateIds" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Остальная часть вашей активности -->
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Проведенные инвентаризации"
+        android:textColor="#4A154B"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
+
+    <!-- Сообщение, если данных нет -->
+    <TextView
+        android:id="@+id/tvEmptyMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:text="Пока здесь пусто. Вы не провели ни одной инвентаризации. Когда администратор направит вам заявку на проведение учёта инвентаря, она здесь отобразится."
+        android:textAlignment="center"
+        android:textColor="#8C8C8C"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

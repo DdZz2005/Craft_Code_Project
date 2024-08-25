@@ -26,10 +26,10 @@
     <!-- Иконка документа -->
     <item
         android:id="@+id/action_document"
-        android:icon="@drawable/img_3"
-        app:showAsAction="always"
         android:contentDescription="document_desc"
-        android:title="TODO" />
+        android:icon="@drawable/img_3"
+        android:title="TODO"
+        app:showAsAction="always" />
 
     <!-- Иконка камеры -->
     <item
