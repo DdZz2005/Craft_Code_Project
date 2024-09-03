@@ -62,6 +62,8 @@ class AccountDetailsActivity : AppCompatActivity() {
             R.id.action_search -> {
                 // Действие при нажатии на иконку поиска
                 true
+
+
             }
             else -> super.onOptionsItemSelected(item)
         }
