@@ -26,33 +26,41 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <!-- Заголовок -->
+
+    <!-- Сообщение, если данных нет -->
+
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="12dp"
         android:text="Проведенные инвентаризации"
         android:textColor="#4A154B"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
 
-    <!-- Сообщение, если данных нет -->
     <TextView
         android:id="@+id/tvEmptyMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="76dp"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
         android:text="Пока здесь пусто. Вы не провели ни одной инвентаризации. Когда администратор направит вам заявку на проведение учёта инвентаря, она здесь отобразится."
         android:textAlignment="center"
         android:textColor="#8C8C8C"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:layout_constraintVertical_bias="0.042" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
