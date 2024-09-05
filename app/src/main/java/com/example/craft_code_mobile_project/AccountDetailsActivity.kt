@@ -27,20 +27,16 @@ class AccountDetailsActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
+        menuInflater.inflate(R.menu.account_details_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.account_details -> {
-                val intent = Intent(this, AccountDetailsActivity::class.java)
-                startActivity(intent)
-                true
-            }
             R.id.company_details -> {
                 val intent = Intent(this, CompanyDetailsActivity::class.java)
                 startActivity(intent)
+                finish()
                 true
             }
             R.id.action_document -> {
@@ -60,10 +56,10 @@ class AccountDetailsActivity : AppCompatActivity() {
                 true
             }
             R.id.action_search -> {
-                // Действие при нажатии на иконку поиска
+                val intent = Intent(this, SearchActivity::class.java)
+                startActivity(intent)
+                finish()
                 true
-
-
             }
             else -> super.onOptionsItemSelected(item)
         }

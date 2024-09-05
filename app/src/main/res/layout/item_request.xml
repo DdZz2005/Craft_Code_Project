@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:gravity="center_vertical">
+
+    <!-- Иконка слева -->
+    <ImageView
+        android:id="@+id/requestIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/img_6"
+        android:contentDescription="@string/request_icon"
+        android:layout_marginEnd="8dp" />
+
+    <!-- Текстовая часть -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Дата -->
+        <TextView
+            android:id="@+id/requestDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ДД. ММ. ГГГГ"
+            android:textColor="#A1A1A1"
+            android:textSize="12sp" />
+
+        <!-- Описание заявки -->
+        <TextView
+            android:id="@+id/requestDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Вам пришла заявка на проведение инвентаризации"
+            android:textColor="#4A154B"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+
+</LinearLayout>

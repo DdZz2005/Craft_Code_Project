@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Кнопка гамбургер для бокового меню -->
+    <item
+        android:id="@+id/action_menu"
+        android:title="Menu"
+        android:icon="@drawable/img_4"
+        app:showAsAction="always"
+        android:contentDescription="menu_desc"
+        android:orderInCategory="100">
+        <menu>
+            <item
+                android:id="@+id/company_details"
+                android:title="Данные компании"
+                android:contentDescription="company_details_desc"/>
+        </menu>
+    </item>
+
+    <!-- Иконка документа -->
+    <item
+        android:id="@+id/action_document"
+        android:contentDescription="document_desc"
+        android:icon="@drawable/img_3"
+        android:title="TODO"
+        app:showAsAction="always" />
+
+    <!-- Иконка камеры -->
+    <item
+        android:id="@+id/action_camera"
+        android:icon="@drawable/img_2"
+        app:showAsAction="always"
+        android:contentDescription="camera_desc"
+        android:title="Сканирование" />
+
+    <!-- Иконка поиска -->
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/img_1"
+        app:showAsAction="always"
+        android:contentDescription="search_desc"
+        android:title="TODO" />
+</menu>

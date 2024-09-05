@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         pref = getSharedPreferences("startMain", MODE_PRIVATE)
 
         // Проверка, есть ли сохраненное состояние авторизации
-        // Поменять на false, чтобы НЕ заходить с окон аутентификации!!!
+        // Поменять на false, чтобы заходить с окон аутентификации!!!
         val isLoggedIn = pref.getBoolean("isLoggedIn", true)
         if (isLoggedIn) {
             val intent = Intent(this, MainActivity::class.java)

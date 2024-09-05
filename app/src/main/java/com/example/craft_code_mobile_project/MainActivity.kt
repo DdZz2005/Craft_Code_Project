@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         // Получение меню из Toolbar
         val menu = binding.toolbar.menu
 
-        // Добавление MenuItem программно, используя равные веса (layout_weight)
+
         for (i in 0 until menu.size()) {
             val menuItem = menu.getItem(i)
             val itemView = menuItem.actionView ?: continue

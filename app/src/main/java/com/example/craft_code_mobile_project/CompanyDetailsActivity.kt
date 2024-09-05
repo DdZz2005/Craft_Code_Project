@@ -19,42 +19,26 @@ class CompanyDetailsActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        // Установка Toolbar
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.title=""
-
-        // Установка макета меню в Toolbar
-        binding.toolbar.inflateMenu(R.menu.main_menu)
-
-        // Получение меню из Toolbar
-        val menu = binding.toolbar.menu
-
-        // Добавление MenuItem программно, используя равные веса (layout_weight)
-        for (i in 0 until menu.size()) {
-            val menuItem = menu.getItem(i)
-            val itemView = menuItem.actionView ?: continue
-
-            // Установка LayoutParams для равномерного распределения
-            val params = Toolbar.LayoutParams(0, Toolbar.LayoutParams.MATCH_PARENT)
-            itemView.layoutParams = params
-        }
+        // Инициализация ToolBar
+        val toolbar: Toolbar = binding.toolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.title = "User"
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
+        menuInflater.inflate(R.menu.company_details_menu, menu)
         return true
     }
+
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.account_details -> {
                 val intent = Intent(this, AccountDetailsActivity::class.java)
                 startActivity(intent)
-                true
-            }
-            R.id.company_details -> {
-                val intent = Intent(this, CompanyDetailsActivity::class.java)
-                startActivity(intent)
+                finish()
                 true
             }
             R.id.action_document -> {
@@ -74,9 +58,12 @@ class CompanyDetailsActivity : AppCompatActivity() {
                 true
             }
             R.id.action_search -> {
-                // Действие при нажатии на иконку поиска
+                val intent = Intent(this, SearchActivity::class.java)
+                startActivity(intent)
+                finish()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
