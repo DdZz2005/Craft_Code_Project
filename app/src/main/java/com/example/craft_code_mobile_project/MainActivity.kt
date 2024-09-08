@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.action_document -> {
-                // Действие при нажатии на иконку документа
+                // Действие при нажатии на иконку документa
                 true
             }
             R.id.action_camera -> {
