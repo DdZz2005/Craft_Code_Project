@@ -2,10 +2,15 @@ package com.example.craft_code_mobile_project
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.craft_code_mobile_project.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -19,14 +24,13 @@ class MainActivity : AppCompatActivity() {
 
         // Установка Toolbar
         setSupportActionBar(binding.toolbar)
-        supportActionBar?.title=""
+        supportActionBar?.title = ""
 
         // Установка макета меню в Toolbar
         binding.toolbar.inflateMenu(R.menu.main_menu)
 
         // Получение меню из Toolbar
         val menu = binding.toolbar.menu
-
 
         for (i in 0 until menu.size()) {
             val menuItem = menu.getItem(i)
@@ -36,13 +40,29 @@ class MainActivity : AppCompatActivity() {
             val params = Toolbar.LayoutParams(0, Toolbar.LayoutParams.MATCH_PARENT)
             itemView.layoutParams = params
         }
-    }
 
+        // Получаем ссылки на элементы разметки
+        val button: Button = findViewById(R.id.button2)
+        val textView3: TextView = findViewById(R.id.textView3)
+        val rootLayout: ConstraintLayout = findViewById(R.id.rootLayout)
+
+        // Устанавливаем обработчик клика для кнопки
+        button.setOnClickListener {
+            // Скрываем старый TextView
+            textView3.visibility = View.GONE
+
+            // Инфлейтим новый макет и добавляем его в корневой контейнер
+            val inflater = LayoutInflater.from(this)
+            val itemRequestView = inflater.inflate(R.layout.item_request, rootLayout, false)
+            rootLayout.addView(itemRequestView)
+        }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.account_details -> {
@@ -79,5 +99,4 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 }
