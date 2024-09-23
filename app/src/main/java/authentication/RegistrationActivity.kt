@@ -1,4 +1,4 @@
-package com.example.craft_code_mobile_project
+package authentication
 
 import android.os.Bundle
 import android.widget.TextView
