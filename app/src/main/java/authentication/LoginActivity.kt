@@ -1,5 +1,6 @@
 package authentication
 
+import UserLoginRequestForm
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -51,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // Setup click listener for sign in button
-        binding.btnSignIn.setOnClickListener {
+        binding.btnLoginIn.setOnClickListener {
             val email = binding.etLogin.text.toString()
             val password = binding.etPassword.text.toString()
 
@@ -59,7 +60,6 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Пожалуйста, заполните все поля", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-                // Реализация аутентификации
         }
     }
 }
