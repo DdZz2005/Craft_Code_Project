@@ -22,54 +22,40 @@
     <!-- Поле ввода информации -->
 
     <!-- Кнопка "Найти" -->
+
+    <!-- Текст сообщения об отсутствии информации -->
+
     <TextView
         android:id="@+id/search_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="347dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="32dp"
         android:text="Поиск информации о товаре/сотруднике"
         android:textColor="#4A154B"
-        android:textSize="24sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <EditText
         android:id="@+id/search_input"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="354dp"
+        android:layout_height="75dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/rounded_text_purple"
         android:drawableStart="@drawable/img_1"
         android:drawablePadding="8dp"
-        android:hint="Введите информацию о сотруднике"
+        android:hint=""
         android:padding="12dp"
         android:textColor="#4A154B"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_title" />
-
-    <!-- Текст сообщения об отсутствии информации -->
-
-    <Button
-        android:id="@+id/search_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:text="Найти"
-        android:textColor="#4A154B"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_input"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/no_results_text"
@@ -97,5 +83,29 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="0dp"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:text="НАЙТИ "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_input"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="171dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="160dp"
+        android:text="Информации не найдено. Пожалуйста проверте введённые данные "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_input" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
