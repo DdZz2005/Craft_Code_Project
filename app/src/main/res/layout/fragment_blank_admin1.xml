@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:scrollbarThumbHorizontal="@drawable/img_9"
+    android:scrollbarThumbVertical="@drawable/img_10"
+    tools:context=".MainActivity"> <!-- Добавлен ID для идентификации контейнера -->
+
+    <!-- Custom Toolbar with LinearLayout -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F2D7FF"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#F2D7FF"
+            app:contentInsetStartWithNavigation="0dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            tools:ignore="DuplicateIds" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Заголовок -->
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="404dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="36dp"
+        android:text="Проведенные инвентаризации"
+        android:textAlignment="center"
+        android:textColor="#4A154B"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="281dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Пока здесь пусто. Вы не назначили ни одной инвентаризации."
+        android:textAlignment="center"
+        android:textColorLink="#673AB7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <Button
+        android:id="@+id/transparentButton"
+        android:layout_width="296dp"
+        android:layout_height="49dp"
+        android:background="@drawable/transparent_button"
+        android:text="Назначить инвентаризацию"
+        android:textColor="#3E025B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.652"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.47"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="51dp"
+        android:layout_height="49dp"
+        app:srcCompat="@drawable/img_9"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="457dp" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="31dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/img_10"
+        tools:layout_editor_absoluteX="75dp"
+        tools:layout_editor_absoluteY="457dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
