@@ -42,7 +42,7 @@ class RegistrationActivity : AppCompatActivity() {
         val fields: Array<Pair<TextView, String>> = arrayOf(
             binding.etFirstName to "Поле не может быть пустым",
             binding.etLastName to "Поле не может быть пустым",
-            binding.etMiddleName to "Поле не может быть пустым",
+            binding.etUsername to "Поле не может быть пустым",
             binding.etEmail to "Поле не может быть пустым",
             binding.etPassword to "Поле не может быть пустым",
             binding.etConfirmPassword to "Поле не может быть пустым"
@@ -63,11 +63,17 @@ class RegistrationActivity : AppCompatActivity() {
 
         val firstName = binding.etFirstName.text.toString()
         val lastName = binding.etLastName.text.toString()
-        val middleName = binding.etMiddleName.text.toString()
+        val username = binding.etUsername.text.toString()
         val email = binding.etEmail.text.toString()
-        val phoneNumber = "Не указано"
         val password = binding.etPassword.text.toString()
-        val role = binding.spinnerRole.selectedItem.toString()
+        var is_superuser = binding.spinnerRole.selectedItem.toString()
+
+        is_superuser = if (is_superuser=="employee"){
+            "1"
+        }
+        else{
+            "0"
+        }
 
 
 
@@ -75,11 +81,11 @@ class RegistrationActivity : AppCompatActivity() {
         val newUser = UserProfileModel(
             first_name = firstName,
             last_name = lastName,
-            middle_name = middleName,
+            username = username,
             email = email,
-            phone_number = phoneNumber,
             password = password,
-            role = role
+            is_superuser = is_superuser
+
         )
 
         // Отправка данных на сервер с помощью Retrofit
