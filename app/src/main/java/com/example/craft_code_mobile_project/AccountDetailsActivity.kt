@@ -7,6 +7,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.craft_code_mobile_project.databinding.ActivityAccountDetailsBinding
+import utils.CameraFunctions
 
 
 class AccountDetailsActivity : AppCompatActivity() {
@@ -16,8 +17,6 @@ class AccountDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAccountDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
 
         // Инициализация ToolBar
         val toolbar: Toolbar = binding.toolbar

@@ -1,4 +1,4 @@
-package com.example.craft_code_mobile_project
+package utils
 
 import android.Manifest
 import android.content.Context

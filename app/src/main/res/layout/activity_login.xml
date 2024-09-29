@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_gradient1"
-    tools:context=".LoginActivity">
+    tools:context="authentication.LoginActivity">
 
 
     <ImageView
@@ -106,11 +106,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnSignIn"
+        app:layout_constraintTop_toBottomOf="@id/btnLoginIn"
         tools:ignore="HardcodedText" />
 
     <Button
-        android:id="@+id/btnSignIn"
+        android:id="@+id/btnLoginIn"
         android:layout_width="293dp"
         android:layout_height="45dp"
         android:layout_marginTop="8dp"

@@ -3,96 +3,93 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <!-- Название товара -->
-
-    <!-- Подзаголовок -->
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteX="-16dp"
+    tools:layout_editor_absoluteY="0dp">
 
     <TextView
         android:id="@+id/qr_result"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_width="300dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="40dp"
         android:text="Товар"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Товар" />
-
-    <!-- Кнопка Получить информацию -->
 
     <TextView
         android:id="@+id/change_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="92dp"
         android:text="Выберите действие:"
         android:textAlignment="textStart"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.141"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/qr_result"
         tools:text="Выберите действие:" />
 
-    <!-- Иконка для информации -->
     <TextView
         android:id="@+id/get_info"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_width="210dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="104dp"
         android:clickable="true"
         android:focusable="true"
         android:text="Получить информацию о товаре"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imageView"
-        app:layout_constraintTop_toBottomOf="@id/change_action"
+        app:layout_constraintTop_toBottomOf="@+id/change_action"
         tools:text="Получить информацию о товаре" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="36dp"
+        app:layout_constraintEnd_toStartOf="@+id/get_info"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/change_action"
-        app:layout_constraintEnd_toStartOf="@id/get_info"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:srcCompat="@drawable/background_gradient1"
-        tools:ignore="ContentDescription" />
+        app:srcCompat="@drawable/img_7"
+        tools:ignore="ContentDescription"
+        tools:layout_editor_absoluteY="266dp" />
 
-    <!-- Иконка для перемещения -->
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView"
-        app:layout_constraintEnd_toStartOf="@id/Mark_move"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:srcCompat="@drawable/background_gradient1"
-        tools:ignore="ContentDescription" />
-
-    <!-- Кнопка Отметить перемещение -->
     <TextView
         android:id="@+id/Mark_move"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_width="224dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="92dp"
         android:clickable="true"
         android:focusable="true"
         android:text="Отметить перемещение товара"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imageView2"
-        app:layout_constraintTop_toBottomOf="@id/get_info"
+        app:layout_constraintTop_toBottomOf="@+id/get_info"
         tools:text="Отметить перемещение товара" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Mark_move"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.102"
+        app:srcCompat="@drawable/img_8"
+        tools:ignore="ContentDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,5 @@
-package com.example.craft_code_mobile_project
+package authentication
+
 
 import android.content.Intent
 import android.os.Bundle
