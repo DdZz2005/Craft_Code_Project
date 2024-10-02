@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Custom Toolbar with LinearLayout -->
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="дд.мм.гггг чч:мм"
+        tools:layout_editor_absoluteX="259dp"
+        tools:layout_editor_absoluteY="130dp" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F2D7FF"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#F2D7FF"
+            app:contentInsetStartWithNavigation="0dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            tools:ignore="DuplicateIds" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Заголовок -->
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="404dp"
+        android:layout_height="66dp"
+        android:text="Проведение инвентаризации"
+        android:textAlignment="center"
+        android:textColor="#3E025B"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/transparentButton"
+        android:layout_width="296dp"
+        android:layout_height="49dp"
+        android:background="@drawable/transparent_button"
+        android:text="Назначить инвентаризацию"
+        android:textColor="#3E025B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.608"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.891"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="51dp"
+        android:layout_height="49dp"
+        app:srcCompat="@drawable/img_9"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="551dp" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="31dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/img_10"
+        tools:layout_editor_absoluteX="77dp"
+        tools:layout_editor_absoluteY="551dp" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="448dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/img_17"
+        tools:layout_editor_absoluteX="42dp" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="49dp"
+        android:layout_height="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:layout_constraintVertical_bias="0.078"
+        app:srcCompat="@drawable/img_16" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="11dp"
+        android:layout_height="27dp"
+        app:srcCompat="@drawable/img_15"
+        tools:layout_editor_absoluteX="61dp"
+        tools:layout_editor_absoluteY="183dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="дд. мм. гггг"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="130dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="265dp"
+        android:layout_height="48dp"
+        android:text="Вы отправили заявку пользователю Фамилия И.О."
+        android:textColor="#3E025B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.726"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.179" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="дд. мм. гггг"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.269" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="420dp"
+        android:text="дд.мм.гггг чч:мм"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.866"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="268dp"
+        android:layout_height="46dp"
+        android:text="Вы отправили заявку пользователю Фамилия И.О."
+        android:textColor="#3E025B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.741"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.336" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/img_17"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="241dp" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="49dp"
+        android:layout_height="19dp"
+        app:srcCompat="@drawable/img_16"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="255dp" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="9dp"
+        android:layout_height="25dp"
+        app:srcCompat="@drawable/img_15"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="269dp" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="дд. мм. гггг. чч: мм"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="345dp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ф. И. О."
+        tools:layout_editor_absoluteX="323dp"
+        tools:layout_editor_absoluteY="345dp" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="266dp"
+        android:layout_height="39dp"
+        android:text="Отчёт о проведенной инвентаризации направлен вам на почту"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="388dp" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/img_18"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="372dp" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/img_19"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="372dp" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/img_20"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="392dp" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="24dp"
+        android:layout_height="10dp"
+        app:srcCompat="@drawable/img_21"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="399dp" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="24dp"
+        android:layout_height="9dp"
+        app:srcCompat="@drawable/img_21"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="409dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
