@@ -28,7 +28,7 @@ class RegistrationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Инициализация Retrofit
-        val retrofit = RetrofitClient.getClient("http://10.0.2.2:8080")
+        val retrofit = RetrofitClient.getClient()
         apiService = retrofit.create(ApiService::class.java)
 
         // Кнопка для регистрации

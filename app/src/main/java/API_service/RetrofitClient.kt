@@ -5,7 +5,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitClient {
     private var retrofit: Retrofit? = null
 
-    fun getClient(baseUrl: String): Retrofit {
+    val baseUrl = "http://10.131.57.168:8080"
+
+    fun getClient(): Retrofit {
+
         if (retrofit == null) {
             // Добавляем Gson с lenient режимом
             val gson = GsonBuilder()

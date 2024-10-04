@@ -69,7 +69,8 @@
         android:clipToPadding="false"
         android:scrollbars="vertical"
         tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="145dp" />
+        tools:layout_editor_absoluteY="145dp"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
