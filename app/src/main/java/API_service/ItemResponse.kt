@@ -3,8 +3,6 @@ data class ItemResponse(
     val name:String,
     val description: String,
     val serial_number: String,
+    val company: String,
     val warehouse: Int,
-    var location: String,
-    var assigned_to: String,
-    var registration_date: String
 )

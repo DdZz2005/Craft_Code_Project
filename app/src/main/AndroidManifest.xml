@@ -38,12 +38,6 @@
             android:name="authentication.ForgottenPasswordStartActivity"
             android:exported="false" />
         <activity
-            android:name="authentication.RegistrationSuccessActivity"
-            android:exported="false" />
-        <activity
-            android:name="authentication.RegistrationActivity"
-            android:exported="false" />
-        <activity
             android:name="authentication.LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -63,6 +57,13 @@
             android:configChanges="orientation|screenSize"
             android:stateNotNeeded="true"
             />
+        <activity
+            android:name=".ScanActivity2"
+            android:screenOrientation="portrait"
+            tools:replace="android:screenOrientation"
+            android:configChanges="orientation|screenSize"
+            android:stateNotNeeded="true"
+            />
         <activity android:name=".ActionWhithTheQrActivity" />
 
         <activity android:name=".AccountDetailsActivity" />
@@ -71,6 +72,9 @@
         <activity android:name=".ProductInfoActivity" />
         <activity android:name=".UpdateItemLocationActivity" />
         <activity android:name=".UpdateItemLocationActivitySuccess" />
+        <activity android:name=".InventoryRequestDetailsActivity" />
+
+
 
 
     </application>

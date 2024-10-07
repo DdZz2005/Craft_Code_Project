@@ -1,4 +1,8 @@
-package com.example.craft_code_mobile_project
+package StartInventory
+
+import com.example.craft_code_mobile_project.ActionWhithTheQrActivity
+import com.example.craft_code_mobile_project.R
+
 
 import ApiService
 import ItemResponse
@@ -14,7 +18,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ScanActivity : AppCompatActivity() {
+class ScanActivity2 : AppCompatActivity() {
 
     private lateinit var barcodeView: CompoundBarcodeView
     private lateinit var apiService: ApiService
@@ -30,13 +34,8 @@ class ScanActivity : AppCompatActivity() {
                 // Останавливаем дальнейшее сканирование
                 barcodeView.pause()
 
-                // Отправляем запрос на сервер для получения информации о товаре
-                getItemInformation(serialNumber)
+                // Тут реализовать процесс проверки ед.инвентаря и прибавления счетчика
             }
-        }
-
-        override fun possibleResultPoints(resultPoints: List<com.google.zxing.ResultPoint>) {
-            // Необязательная обработка возможных точек результата
         }
     }
 
@@ -58,36 +57,8 @@ class ScanActivity : AppCompatActivity() {
         apiService = retrofit.create(ApiService::class.java)
     }
 
-    private fun getItemInformation(serialNumber: String) {
-        // Запрос к серверу для получения информации по серийному номеру
-        apiService.getItemBySerialNumber(serialNumber).enqueue(object : Callback<ItemResponse> {
-            override fun onResponse(call: Call<ItemResponse>, response: Response<ItemResponse>) {
-                if (response.isSuccessful) {
-                    val item = response.body()
-                    item?.let {
-                        // Передаем все данные товара в следующую активность
-                        val intent = Intent(this@ScanActivity, ActionWhithTheQrActivity::class.java).apply {
-                            putExtra("ITEM_NAME", item.name)
-                            putExtra("ITEM_DESCRIPTION", item.description)
-                            putExtra("ITEM_SERIAL_NUMBER", item.serial_number)
-                            putExtra("ITEM_WAREHOUSE", item.warehouse)
-                            putExtra("ITEM_COMPANY", item.company)
-                        }
-                        startActivity(intent)
-                        finish() // Завершаем текущую активность после сканирования
-                    }
-                } else {
-                    // Обработка ошибки ответа
-                    Toast.makeText(this@ScanActivity, "Ошибка при получении данных", Toast.LENGTH_SHORT).show()
-                }
-            }
 
-            override fun onFailure(call: Call<ItemResponse>, t: Throwable) {
-                // Обработка ошибки сети
-                Toast.makeText(this@ScanActivity, "Ошибка подключения: ${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
+
 
     override fun onResume() {
         super.onResume()

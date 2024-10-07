@@ -74,9 +74,8 @@ class ActionWhithTheQrActivity : AppCompatActivity() {
                             putExtra("ITEM_DESCRIPTION", it.description)
                             putExtra("ITEM_SERIAL_NUMBER", it.serial_number)
                             putExtra("ITEM_WAREHOUSE", it.warehouse)
-                            putExtra("ITEM_LOCATION", it.location)
-                            putExtra("ITEM_ASSIGNED_TO", it.assigned_to)
-                            putExtra("ITEM_REGISTRATION_DATE", it.registration_date)
+                            putExtra("ITEM_COMPANY", it.company)
+
                         }
                         startActivity(intent)
 

@@ -1,10 +1,11 @@
 package authentication
-
 import ApiService
 import UserLoginRequestForm
+import UserLoginResponse
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -34,29 +35,7 @@ class LoginActivity : AppCompatActivity() {
         pref = getSharedPreferences("auth", MODE_PRIVATE)
 
         // Проверка сохраненного состояния авторизации
-        val isLoggedIn = pref.getBoolean("isLoggedIn", true)
-        if (isLoggedIn) {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-            return
-        }
-
-        // Setup click listener for registration link
-        val registrationTextView: TextView = findViewById(R.id.Registration)
-        registrationTextView.setOnClickListener {
-            val intent = Intent(this, RegistrationActivity::class.java)
-            startActivity(intent)
-        }
-
-        // Setup click listener for forgot password link
-        val forgotPasswordTextView: TextView = findViewById(R.id.tvForgotPassword)
-        forgotPasswordTextView.setOnClickListener {
-            val intent = Intent(this, ForgottenPasswordStartActivity::class.java)
-            startActivity(intent)
-        }
-
-
+        checkLoginState()
 
         // Клик по кнопке входа
         binding.btnLoginIn.setOnClickListener {
@@ -71,32 +50,47 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun checkLoginState() {
+        // Проверка сохраненного состояния авторизации
+        val isLoggedIn = pref.getBoolean("isLoggedIn", true)
+        if (isLoggedIn) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
     private fun loginInUser(username: String, password: String) {
         // Создаем объект запроса с логином и паролем
         val loginRequest = UserLoginRequestForm(username, password)
 
         // Отправляем запрос на сервер через Retrofit
-        apiService.loginUser(loginRequest).enqueue(object : Callback<UserLoginRequestForm> {
-            override fun onResponse(call: Call<UserLoginRequestForm>, response: Response<UserLoginRequestForm>) {
+        apiService.loginUser(loginRequest).enqueue(object : Callback<UserLoginResponse> {
+            override fun onResponse(call: Call<UserLoginResponse>, response: Response<UserLoginResponse>) {
                 if (response.isSuccessful && response.body() != null) {
-                    // Сохраняем состояние авторизации в SharedPreferences
+                    // Log the successful response
+                    Log.d("LOGIN_SUCCESS", response.body().toString())
+                    // Save the login state
                     val editor = pref.edit()
                     editor.putBoolean("isLoggedIn", true)
                     editor.apply()
 
-                    // Переход на главный экран
+                    // Navigate to the main activity
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
+                    // Log the error
+                    Log.e("LOGIN_ERROR", "Response: ${response.errorBody()}")
                     Toast.makeText(this@LoginActivity, "Ошибка авторизации", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            override fun onFailure(call: Call<UserLoginRequestForm>, t: Throwable) {
-                Toast.makeText(this@LoginActivity, "Ошибка подключения: ${t.message}", Toast.LENGTH_SHORT).show()
+            override fun onFailure(call: Call<UserLoginResponse>, t: Throwable) {
+                Log.e("LOGIN_FAILURE", t.message ?: "Unknown error")
+                Toast.makeText(this@LoginActivity, "Ошибка подключения", Toast.LENGTH_SHORT).show()
             }
         })
+
     }
 }
-

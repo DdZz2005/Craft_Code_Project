@@ -1,4 +1,4 @@
 data class UserLoginRequestForm(
-    val username: String,
+    val email: String,
     val password: String
 )
