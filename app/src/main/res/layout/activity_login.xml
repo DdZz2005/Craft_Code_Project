@@ -68,47 +68,6 @@
         app:layout_constraintTop_toBottomOf="@id/etLogin"
         tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/Registration"
-        android:layout_width="181dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="184dp"
-        android:clickable="true"
-        android:fontFamily="sans-serif-thin"
-        android:text="Зарегистрироваться?"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:typeface="sans"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvForgotPassword"
-        app:layout_constraintVertical_bias="0.196" />
-
-    <TextView
-        android:id="@+id/tvForgotPassword"
-        android:layout_width="182dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="20dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="sans-serif-thin"
-        android:text="Забыли пароль?"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:typeface="sans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnLoginIn"
-        tools:ignore="HardcodedText" />
-
     <Button
         android:id="@+id/btnLoginIn"
         android:layout_width="293dp"
@@ -120,10 +79,11 @@
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etPassword"
+        app:layout_constraintVertical_bias="0.039"
         tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

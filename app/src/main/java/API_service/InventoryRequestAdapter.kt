@@ -20,9 +20,10 @@ class InventoryRequestAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val request = requestList[position]
-        // Установи данные в виджеты ViewHolder'а
+        holder.requestDescription.text = "Заявка от ${request.employee}"
+        holder.requestDate.text = "Срок: ${request.deadline}"
         holder.itemView.setOnClickListener {
-            onItemClick(request) // Передаём выбранную заявку в колбэк
+            onItemClick(request)
         }
     }
 
@@ -31,9 +32,7 @@ class InventoryRequestAdapter(
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        // Здесь привяжи виджеты для отображения данных заявки
-        val requestDescription = itemView.findViewById<TextView>(R.id.requestDescription)
-        val requestDate = itemView.findViewById<TextView>(R.id.requestDate)
+        val requestDescription: TextView = itemView.findViewById(R.id.requestDescription)
+        val requestDate: TextView = itemView.findViewById(R.id.requestDate)
     }
 }
-

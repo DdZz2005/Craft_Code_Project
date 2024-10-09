@@ -1,6 +1,5 @@
 package com.example.craft_code_mobile_project
 
-import StartInventory.ScanActivity2
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -21,13 +20,13 @@ class InventoryRequestDetailsActivity : AppCompatActivity() {
         val deadline = intent.getStringExtra("deadline")
 
         // Заполнение данными элементов интерфейса
-        binding.inventoryRequestMessage.text = "Уважаемая $employeeName, ваш администратор отправил вам заявку на проведение инвентаризации в указанных ниже кабинетах/отделах:"
+        binding.inventoryRequestMessage.text = "Уважаемый $employeeName, ваш администратор отправил вам заявку на проведение инвентаризации в указанных кабинетах/отделах:"
         binding.inventoryRequestRooms.text = rooms
         binding.inventoryRequestDeadline.text = deadline
 
-
-        binding.startInventoryButton.setOnClickListener{
-            val intent = Intent(this, ScanActivity2::class.java)
+        binding.startInventoryButton.setOnClickListener {
+            // Логика для обработки нажатия на кнопку "Начать инвентаризацию"
+            val intent = Intent(this, ScanActivity::class.java)
             startActivity(intent)
             finish()
         }

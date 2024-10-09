@@ -29,22 +29,15 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name="authentication.ChangingPasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name="authentication.CheckingMailActivity"
-            android:exported="false" />
-        <activity
-            android:name="authentication.ForgottenPasswordStartActivity"
-            android:exported="false" />
-        <activity
             android:name="authentication.LoginActivity"
-            android:exported="true">
+            android:exported="true"
+            tools:ignore="MissingClass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
         <service
             android:name="API_service.ApiService"
@@ -60,10 +53,12 @@
         <activity
             android:name=".ScanActivity2"
             android:screenOrientation="portrait"
-            tools:replace="android:screenOrientation"
             android:configChanges="orientation|screenSize"
             android:stateNotNeeded="true"
             />
+
+
+
         <activity android:name=".ActionWhithTheQrActivity" />
 
         <activity android:name=".AccountDetailsActivity" />

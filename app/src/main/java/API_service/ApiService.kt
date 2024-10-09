@@ -8,8 +8,8 @@ import retrofit2.http.Path
 interface ApiService {
 
     // POST запрос для авторизации
-    @POST("R/api/login/")
-    fun loginUser(@Body loginData: UserLoginRequestForm): Call<UserLoginResponse>
+    @POST("accounts/api/token/")
+    fun login(@Body request: LoginRequest): Call<TokenResponse>
 
     // GET запрос для получения товара по серийному номеру
     @GET("stock/items/{serial_number}/")
@@ -28,9 +28,9 @@ interface ApiService {
 
     // GET запрос для получения информации о пользователе
     @GET("accounts/api/user/")
-    fun getUserDetails(): Call<UserProfileModel>
+    fun getUserDetails(): Call<UserDetailsResponse>
 
     // GET запрос для получения информации о компании
     @GET("accounts/api/company/")
-    fun getCompanyDetails(): Call<CompanyModel>
+    fun getCompanyDetails(): Call<CompanyDetailsResponse>
 }

@@ -14,16 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F2D7FF"
-        tools:ignore="MissingConstraints">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#F2D7FF"
-            android:theme="?attr/actionBarTheme"
-            app:titleTextColor="#4A154B" />
-    </com.google.android.material.appbar.AppBarLayout>
+        tools:ignore="MissingConstraints"/>
 
     <!-- CompoundBarcodeView -->
     <com.journeyapps.barcodescanner.CompoundBarcodeView
@@ -51,37 +42,31 @@
 
     <TextView
         android:id="@+id/textScan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_width="199dp"
+        android:layout_height="22dp"
         android:layout_marginTop="20dp"
         android:text="Отсканировано:"
         android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/barcode_scanner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.136"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.277" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="Завершить"
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="561dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0/10"
-        android:textColor="@android:color/holo_green_light"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="149dp"
-        tools:layout_editor_absoluteY="86dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barcode_scanner"
         tools:ignore="MissingConstraints" />
 
 
