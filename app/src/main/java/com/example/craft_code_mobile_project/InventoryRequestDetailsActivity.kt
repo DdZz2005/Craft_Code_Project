@@ -14,7 +14,7 @@ class InventoryRequestDetailsActivity : AppCompatActivity() {
         binding = ActivityInventoryRequestDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Получение данных из Intent
+        // Получение данных из Inten
         val employeeName = intent.getStringExtra("employee_name")
         val rooms = intent.getStringExtra("rooms")
         val deadline = intent.getStringExtra("deadline")
