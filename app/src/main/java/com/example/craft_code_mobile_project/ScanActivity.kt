@@ -68,10 +68,10 @@ class ScanActivity : AppCompatActivity() {
                         // Передаем все данные товара в следующую активность
                         val intent = Intent(this@ScanActivity, ActionWhithTheQrActivity::class.java).apply {
                             putExtra("ITEM_NAME", item.name)
-                            putExtra("ITEM_DESCRIPTION", item.description)
+
                             putExtra("ITEM_SERIAL_NUMBER", item.serial_number)
                             putExtra("ITEM_WAREHOUSE", item.warehouse)
-                            putExtra("ITEM_COMPANY", item.company)
+
                         }
                         startActivity(intent)
                         finish() // Завершаем текущую активность после сканирования

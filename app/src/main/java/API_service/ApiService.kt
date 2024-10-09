@@ -33,4 +33,17 @@ interface ApiService {
     // GET запрос для получения информации о компании
     @GET("accounts/api/company/")
     fun getCompanyDetails(): Call<CompanyDetailsResponse>
+
+    @POST("api/inventory-requests/{request_id}/complete/")
+    fun completeInventoryRequest(
+        @Path("request_id") requestId: String,
+        @Body requestBody: Map<String, List<String>>
+    ): Call<Void>
+
+    @GET("api/inventory-requests/{request_id}/items/")
+    fun getItemsForRequest(
+        @Path("request_id") requestId: Int
+    ):  Call<List<ItemResponse>>  // Теперь возвращаем Map
+
+
 }

@@ -52,7 +52,7 @@ class AccountDetailsActivity : AppCompatActivity() {
                 }).build()
 
             apiService = Retrofit.Builder()
-                .baseUrl("http://192.168.0.100:8080")
+                .baseUrl("http://192.168.0.105:8080")
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
@@ -60,11 +60,7 @@ class AccountDetailsActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Токен не найден, требуется авторизация", Toast.LENGTH_SHORT).show()
         }
-
-        // По нажатию кнопки загружаем и отображаем данные пользователя
-        binding.buttonSubmit.setOnClickListener {
-            fetchUserDetails()
-        }
+        fetchUserDetails()
     }
 
     private fun fetchUserDetails() {

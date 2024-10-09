@@ -68,6 +68,8 @@
         <activity android:name=".UpdateItemLocationActivity" />
         <activity android:name=".UpdateItemLocationActivitySuccess" />
         <activity android:name=".InventoryRequestDetailsActivity" />
+        <activity android:name=".ScannedItemDetailsActivity" />
+
 
 
 
