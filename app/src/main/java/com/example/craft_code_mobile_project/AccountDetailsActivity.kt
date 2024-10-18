@@ -51,8 +51,7 @@ class AccountDetailsActivity : AppCompatActivity() {
                     chain.proceed(request)
                 }).build()
 
-            apiService = Retrofit.Builder()
-                .baseUrl("http://192.168.0.105:8080")
+            apiService = Retrofit.Builder().baseUrl("http://192.168.0.100:8080")
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
@@ -112,7 +111,7 @@ class AccountDetailsActivity : AppCompatActivity() {
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.company_details_menu, menu)
+        menuInflater.inflate(R.menu.account_details_menu, menu)
         return true
     }
 
@@ -125,7 +124,9 @@ class AccountDetailsActivity : AppCompatActivity() {
                 true
             }
             R.id.action_document -> {
-                // Handle document action
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
                 true
             }
             R.id.action_camera -> {

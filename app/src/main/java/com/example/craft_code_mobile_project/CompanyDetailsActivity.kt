@@ -54,8 +54,7 @@ class CompanyDetailsActivity : AppCompatActivity() {
                     chain.proceed(request)
                 }).build()
 
-            apiService = Retrofit.Builder()
-                .baseUrl("http://192.168.0.105:8080")
+            apiService = Retrofit.Builder().baseUrl("http://192.168.0.100:8080")
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
@@ -117,7 +116,9 @@ class CompanyDetailsActivity : AppCompatActivity() {
                 true
             }
             R.id.action_document -> {
-                // Handle document action
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
                 true
             }
             R.id.action_camera -> {

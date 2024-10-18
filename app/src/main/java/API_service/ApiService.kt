@@ -1,3 +1,4 @@
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -35,15 +36,22 @@ interface ApiService {
     fun getCompanyDetails(): Call<CompanyDetailsResponse>
 
     @POST("api/inventory-requests/{request_id}/complete/")
+    @JvmSuppressWildcards
     fun completeInventoryRequest(
         @Path("request_id") requestId: String,
-        @Body requestBody: Map<String, List<String>>
-    ): Call<Void>
+        @Body scannedItems: Map<String, List<String>> // Убираем wildcard
+    ): Call<CompleteInventoryResponse>
+
+    @GET("api/inventory-requests/{request_id}/pdf/")
+    fun downloadInventoryRequestPdf(
+        @Path("request_id") requestId: String
+    ): Call<ResponseBody>  // Возвращаем ResponseBody, чтобы работать с PDF
+
 
     @GET("api/inventory-requests/{request_id}/items/")
     fun getItemsForRequest(
         @Path("request_id") requestId: Int
-    ):  Call<List<ItemResponse>>  // Теперь возвращаем Map
+    ):  Call<List<ItemResponse>>
 
 
 }

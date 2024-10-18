@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitClient {
     private var retrofit: Retrofit? = null
 
-    val baseUrl = "http://192.168.0.105:8080/"
+    val baseUrl = "http://172.20.10.9:8080/"
 
 
     // Функция для получения клиента с добавлением токена

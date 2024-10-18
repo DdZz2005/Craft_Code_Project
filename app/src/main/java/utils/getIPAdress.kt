@@ -1,6 +1,3 @@
-import android.content.Context
-import android.net.wifi.WifiManager
-import java.net.InetAddress
 import java.net.NetworkInterface
 import java.util.*
 
@@ -26,7 +23,6 @@ fun getIPAddress(useIPv4: Boolean): String {
             }
         }
     } catch (ex: Exception) {
-        // Логгирование ошибок
     }
     return ""
 }

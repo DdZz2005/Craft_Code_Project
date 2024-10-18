@@ -16,12 +16,22 @@ import retrofit2.Callback
 import retrofit2.Response
 import authentication.LoginActivity
 import android.content.SharedPreferences
+import android.net.Uri
+import android.os.Build
+import android.os.Environment
 import android.util.Log
+import androidx.core.content.FileProvider
+import createPdfReport
+import okhttp3.ResponseBody
+import utils.CameraFunctions
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
+import java.io.OutputStream
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var inventoryRequestAdapter: InventoryRequestAdapter
     private lateinit var apiService: ApiService
     private lateinit var sharedPreferences: SharedPreferences
 
@@ -76,12 +86,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Метод для настройки RecyclerView
-    private fun setupRecyclerView(requestList: List<InventoryRequest>) {
-        inventoryRequestAdapter = InventoryRequestAdapter(requestList) { selectedRequest ->
-            openInventoryRequestDetails(selectedRequest)  // Открываем детали заявки
+    // Исправленный метод для настройки RecyclerView
+    fun setupRecyclerView(requestList: List<InventoryRequest>) {
+        val adapter = InventoryRequestAdapter(requestList) { request, isCompleted ->
+            if (isCompleted) {
+                createPdfReport(request) // передайте объект вашей заявки
+            } else {
+                // Переход к деталям заявки для незавершенных
+                openInventoryRequestDetails(request)
+            }
         }
-        binding.recyclerView.adapter = inventoryRequestAdapter
+
+        binding.recyclerView.adapter = adapter // Используем binding для доступа к recyclerView
     }
+
+
 
     // Метод для перехода к деталям заявки
     private fun openInventoryRequestDetails(request: InventoryRequest) {
@@ -93,10 +112,13 @@ class MainActivity : AppCompatActivity() {
             putExtra("rooms", roomsString)
 
             putExtra("deadline", request.deadline)
+
+
             putExtra("REQUEST_ID", request.id.toString())
         }
         startActivity(intent)
     }
+
 
     // Метод для перенаправления на логин
     private fun redirectToLogin() {
@@ -104,5 +126,48 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+
+
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.account_details -> {
+                val intent = Intent(this, AccountDetailsActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.company_details -> {
+                val intent = Intent(this, CompanyDetailsActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_document -> {
+                // Действие при нажатии на иконку документа
+                true
+            }
+            R.id.action_camera -> {
+                if (CameraFunctions.checkCameraPermission(this)) {
+                    val intent = Intent(this, ScanActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    CameraFunctions.requestCameraPermission(this)
+                }
+                true
+            }
+            R.id.action_search -> {
+                val intent = Intent(this, SearchActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

@@ -27,7 +27,7 @@ class ScanActivity2 : AppCompatActivity() {
     private lateinit var textScan: TextView
     private lateinit var btnComplete: Button
     private lateinit var binding: ActivityScan2Binding
-    private var itemsToScan: List<ItemResponse> = listOf() // Список товаров
+    private var itemsToScan: List<ItemResponse> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,17 +43,22 @@ class ScanActivity2 : AppCompatActivity() {
         // Инициализация API клиента
         apiService = RetrofitClient.getClient().create(ApiService::class.java)
 
-        // Получаем ID заявки и загружаем товары для сканирования
-        val requestId = intent.getStringExtra("REQUEST_ID") ?: ""
-        loadItemsFromRequest(requestId.toInt())
+        // Получаем ID заявки как строку
+        val requestId = intent.getStringExtra("REQUEST_ID")
+        if (requestId == null) {
+            Toast.makeText(this, "Ошибка: не удалось получить ID заявки", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
 
-        // Непрерывное сканирование
+        loadItemsFromRequest(requestId)
+
         barcodeView.decodeContinuous(object : BarcodeCallback {
             override fun barcodeResult(result: BarcodeResult?) {
                 result?.let {
                     val serialNumber = it.text
                     if (scannedItems.add(serialNumber)) {
-                        showScannedItemDetails(serialNumber) // Показать детали товара
+                        showScannedItemDetails(serialNumber)
                         updateScanCounter()
                     }
                 }
@@ -62,7 +67,6 @@ class ScanActivity2 : AppCompatActivity() {
 
         // Обработчик нажатия на кнопку завершения
         btnComplete.setOnClickListener {
-            Log.d("ScanActivity2", "Кнопка завершения нажата")
             barcodeView.pause() // Останавливаем сканирование
             navigateToConfirmationScreen(requestId)
         }
@@ -90,13 +94,14 @@ class ScanActivity2 : AppCompatActivity() {
         val intent = Intent(this, ConfirmCompletionActivity::class.java).apply {
             putExtra("REQUEST_ID", requestId)
             putStringArrayListExtra("SCANNED_ITEMS", ArrayList(scannedItems))
+            Log.d("scannedItems", "REQUEST_ID: $requestId; SCANNED_ITEMS: ${ArrayList(scannedItems)}")
         }
         startActivity(intent)
     }
 
     // Загрузка товаров для заявки с сервера
-    private fun loadItemsFromRequest(requestId: Int) {
-        apiService.getItemsForRequest(requestId).enqueue(object : Callback<List<ItemResponse>> {
+    private fun loadItemsFromRequest(requestId: String) {
+        apiService.getItemsForRequest(requestId.toInt()).enqueue(object : Callback<List<ItemResponse>> {
             override fun onResponse(call: Call<List<ItemResponse>>, response: Response<List<ItemResponse>>) {
                 if (response.isSuccessful) {
                     itemsToScan = response.body() ?: listOf()
