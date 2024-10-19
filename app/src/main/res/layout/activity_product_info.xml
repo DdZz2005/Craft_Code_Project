@@ -60,7 +60,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Местоположение:"
+            android:text="Компания:"
             android:textStyle="bold"
             android:textSize="18sp"
             android:layout_marginTop="16dp"
@@ -89,14 +89,6 @@
             android:text=""/>
 
         <!-- Ответственный -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ответственный:"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"/>
 
         <TextView
             android:id="@+id/itemAssignedTo"
@@ -105,14 +97,6 @@
             android:text=""/>
 
         <!-- Дата регистрации -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Дата регистрации:"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"/>
 
         <TextView
             android:id="@+id/itemRegistrationDate"

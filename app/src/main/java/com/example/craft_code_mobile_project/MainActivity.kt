@@ -1,49 +1,143 @@
 package com.example.craft_code_mobile_project
 
+import API_service.InventoryRequestAdapter
+import ApiService
+import InventoryRequest
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.craft_code_mobile_project.databinding.ActivityMainBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import authentication.LoginActivity
+import android.content.SharedPreferences
+import android.net.Uri
+import android.os.Build
+import android.os.Environment
+import android.util.Log
+import androidx.core.content.FileProvider
+import createPdfReport
+import okhttp3.ResponseBody
 import utils.CameraFunctions
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
+import java.io.OutputStream
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var apiService: ApiService
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Установка Toolbar
         setSupportActionBar(binding.toolbar)
-        supportActionBar?.title=""
 
-        // Установка макета меню в Toolbar
-        binding.toolbar.inflateMenu(R.menu.main_menu)
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Получение меню из Toolbar
-        val menu = binding.toolbar.menu
+        sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE)
+        val token = sharedPreferences.getString("access_token", null)
 
+        if (token != null) {
+            initializeApiService(token)  // Инициализируем API с токеном
+            fetchInventoryRequests()     // Загружаем заявки
+        } else {
+            redirectToLogin()            // Перенаправляем на логин
+        }
 
-        for (i in 0 until menu.size()) {
-            val menuItem = menu.getItem(i)
-            val itemView = menuItem.actionView ?: continue
-
-            // Установка LayoutParams для равномерного распределения
-            val params = Toolbar.LayoutParams(0, Toolbar.LayoutParams.MATCH_PARENT)
-            itemView.layoutParams = params
+        binding.btnRefresh.setOnClickListener {
+            fetchInventoryRequests()     // Обновляем заявки при нажатии
         }
     }
+
+    // Метод для инициализации Retrofit с токеном
+    private fun initializeApiService(token: String) {
+        apiService = RetrofitClient.getClient(token).create(ApiService::class.java)
+    }
+
+    // Метод для загрузки заявок
+    private fun fetchInventoryRequests() {
+        apiService.getPendingRequests().enqueue(object : Callback<List<InventoryRequest>> {
+            override fun onResponse(
+                call: Call<List<InventoryRequest>>,
+                response: Response<List<InventoryRequest>>
+            ) {
+                if (response.isSuccessful) {
+                    val requestList = response.body() ?: emptyList()
+                    setupRecyclerView(requestList)  // Настраиваем RecyclerView
+                } else {
+                    Toast.makeText(this@MainActivity, "Ошибка: ${response.message()}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<InventoryRequest>>, t: Throwable) {
+                Toast.makeText(this@MainActivity, "Ошибка подключения", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    // Метод для настройки RecyclerView
+    // Исправленный метод для настройки RecyclerView
+    fun setupRecyclerView(requestList: List<InventoryRequest>) {
+        val adapter = InventoryRequestAdapter(requestList) { request, isCompleted ->
+            if (isCompleted) {
+
+                createPdfReport(request)
+            } else {
+                // Переход к деталям заявки для незавершенных
+                openInventoryRequestDetails(request)
+            }
+        }
+
+        binding.recyclerView.adapter = adapter // Используем binding для доступа к recyclerView
+    }
+
+
+
+    // Метод для перехода к деталям заявки
+    private fun openInventoryRequestDetails(request: InventoryRequest) {
+        val intent = Intent(this, InventoryRequestDetailsActivity::class.java).apply {
+            putExtra("employee_name", request.employee)
+
+            // Преобразуем список складов в строку
+            val roomsString = request.warehouses.joinToString(", ")
+            putExtra("rooms", roomsString)
+
+            putExtra("deadline", request.deadline)
+
+
+            putExtra("REQUEST_ID", request.id.toString())
+        }
+        startActivity(intent)
+    }
+
+
+    // Метод для перенаправления на логин
+    private fun redirectToLogin() {
+        Toast.makeText(this, "Необходима авторизация", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+
+
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.account_details -> {
@@ -61,13 +155,10 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.action_camera -> {
-                // Проверка разрешений
                 if (CameraFunctions.checkCameraPermission(this)) {
-                    // Если разрешение уже предоставлено, запускаем ScanActivity
                     val intent = Intent(this, ScanActivity::class.java)
                     startActivity(intent)
                 } else {
-                    // Если разрешения нет, запрашиваем его
                     CameraFunctions.requestCameraPermission(this)
                 }
                 true
@@ -80,5 +171,4 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 }

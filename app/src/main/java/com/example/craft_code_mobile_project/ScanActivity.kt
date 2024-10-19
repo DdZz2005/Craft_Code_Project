@@ -5,6 +5,8 @@ import ItemResponse
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.journeyapps.barcodescanner.CompoundBarcodeView
@@ -13,6 +15,7 @@ import com.journeyapps.barcodescanner.BarcodeResult
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import utils.CameraFunctions
 
 class ScanActivity : AppCompatActivity() {
 
@@ -68,12 +71,10 @@ class ScanActivity : AppCompatActivity() {
                         // Передаем все данные товара в следующую активность
                         val intent = Intent(this@ScanActivity, ActionWhithTheQrActivity::class.java).apply {
                             putExtra("ITEM_NAME", item.name)
-                            putExtra("ITEM_DESCRIPTION", item.description)
+
                             putExtra("ITEM_SERIAL_NUMBER", item.serial_number)
                             putExtra("ITEM_WAREHOUSE", item.warehouse)
-                            putExtra("ITEM_LOCATION", item.location)
-                            putExtra("ITEM_ASSIGNED_TO", item.assigned_to)
-                            putExtra("ITEM_REGISTRATION_DATE", item.registration_date)
+
                         }
                         startActivity(intent)
                         finish() // Завершаем текущую активность после сканирования
@@ -100,5 +101,43 @@ class ScanActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         barcodeView.pause() // Приостанавливаем сканирование, когда активность на паузе
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.account_details -> {
+                val intent = Intent(this, AccountDetailsActivity::class.java)
+                startActivity(intent)
+                finish()
+                true
+            }
+            R.id.action_document -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+                true
+            }
+            R.id.action_camera -> {
+                if (CameraFunctions.checkCameraPermission(this)) {
+                    val intent = Intent(this, ScanActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    CameraFunctions.requestCameraPermission(this)
+                }
+                true
+            }
+            R.id.action_search -> {
+                val intent = Intent(this, SearchActivity::class.java)
+                startActivity(intent)
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

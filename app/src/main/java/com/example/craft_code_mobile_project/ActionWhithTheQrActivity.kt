@@ -71,13 +71,11 @@ class ActionWhithTheQrActivity : AppCompatActivity() {
                         // Передаем все данные товара в следующую активность
                         val intent = Intent(this@ActionWhithTheQrActivity, ProductInfoActivity::class.java).apply {
                             putExtra("ITEM_NAME", it.name)
-                            putExtra("ITEM_DESCRIPTION", it.description)
                             putExtra("ITEM_SERIAL_NUMBER", it.serial_number)
                             putExtra("ITEM_WAREHOUSE", it.warehouse)
-                            putExtra("ITEM_LOCATION", it.location)
-                            putExtra("ITEM_ASSIGNED_TO", it.assigned_to)
-                            putExtra("ITEM_REGISTRATION_DATE", it.registration_date)
+
                         }
+
                         startActivity(intent)
 
                     }
