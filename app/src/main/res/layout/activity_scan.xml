@@ -27,8 +27,8 @@
     <!-- CompoundBarcodeView -->
     <com.journeyapps.barcodescanner.CompoundBarcodeView
         android:id="@+id/barcode_scanner"
-        android:layout_width="280dp"
-        android:layout_height="280dp"
+        android:layout_width="249dp"
+        android:layout_height="295dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -41,8 +41,8 @@
 
         <ImageView
             android:id="@+id/img_5"
-            android:layout_width="280dp"
-            android:layout_height="280dp"
+            android:layout_width="249dp"
+            android:layout_height="230dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:background="@drawable/img_5" />

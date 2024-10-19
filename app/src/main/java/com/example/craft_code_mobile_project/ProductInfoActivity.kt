@@ -17,17 +17,15 @@ class ProductInfoActivity : AppCompatActivity() {
         val itemDescription = intent.getStringExtra("ITEM_DESCRIPTION")
         val itemSerialNumber = intent.getStringExtra("ITEM_SERIAL_NUMBER")
         val itemWarehouse = intent.getStringExtra("ITEM_WAREHOUSE")
-        val itemLocation = intent.getStringExtra("ITEM_LOCATION")
-        val itemAssignedTo = intent.getStringExtra("ITEM_ASSIGNED_TO")
-        val itemRegistrationDate = intent.getStringExtra("ITEM_REGISTRATION_DATE")
+        val itemCompany = intent.getStringExtra("ITEM_COMPANY")
+
 
         // Устанавливаем значения в TextView
         binding.itemName.text = itemName
         binding.itemDescription.text = itemDescription
         binding.itemSerialNumber.text = itemSerialNumber
         binding.itemWarehouse.text = itemWarehouse
-        binding.itemLocation.text = itemLocation
-        binding.itemAssignedTo.text = itemAssignedTo
-        binding.itemRegistrationDate.text = itemRegistrationDate
+        binding.itemLocation.text = itemCompany
+
     }
 }

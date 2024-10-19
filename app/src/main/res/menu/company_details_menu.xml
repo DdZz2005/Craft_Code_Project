@@ -15,7 +15,7 @@
             <item
                 android:id="@+id/account_details"
                 android:title="Данные учётной записи"
-                android:contentDescription="account_details_desc"/>
+                android:contentDescription="account_details_desc" />
 
         </menu>
     </item>
@@ -26,6 +26,7 @@
         android:contentDescription="document_desc"
         android:icon="@drawable/img_3"
         android:title="TODO"
+
         app:showAsAction="always" />
 
     <!-- Иконка камеры -->
