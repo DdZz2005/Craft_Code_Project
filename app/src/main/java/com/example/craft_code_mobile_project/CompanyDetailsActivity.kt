@@ -54,7 +54,7 @@ class CompanyDetailsActivity : AppCompatActivity() {
                     chain.proceed(request)
                 }).build()
 
-            apiService = Retrofit.Builder().baseUrl("http://192.168.0.100:8080")
+            apiService = Retrofit.Builder().baseUrl("http://192.168.1.13:8080")
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

@@ -20,7 +20,9 @@ class InventoryRequestDetailsActivity : AppCompatActivity() {
         val employeeName = intent.getStringExtra("employee_name") ?: "Неизвестный сотрудник"
         val rooms = intent.getStringExtra("rooms") ?: "Нет информации о кабинетах"
         val deadline = intent.getStringExtra("deadline") ?: "Нет информации о дедлайне"
-        val requestId = intent.getStringExtra("REQUEST_ID") // Вернем получение ID как строку
+        val requestId = intent.getStringExtra("REQUEST_ID")
+
+        Log.d("INFO: ", "${requestId}, ${rooms}")
 
         if (requestId == null) {
             Toast.makeText(this, "Не удалось получить ID заявки", Toast.LENGTH_SHORT).show()

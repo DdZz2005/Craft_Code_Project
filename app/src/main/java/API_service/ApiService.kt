@@ -49,9 +49,10 @@ interface ApiService {
 
 
     @GET("api/inventory-requests/{request_id}/items/")
-    fun getItemsForRequest(
-        @Path("request_id") requestId: Int
-    ):  Call<List<ItemResponse>>
+    fun getItems(@Path("request_id") requestId: String): Call<List<ItemResponse>>
+
+    @GET("api/warehouses/")
+    fun getWarehouses(): Call<List<WarehouseResponse>>
 
 
 }

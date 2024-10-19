@@ -10,6 +10,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.craft_code_mobile_project.databinding.ActivityScan2Binding
 import com.journeyapps.barcodescanner.BarcodeCallback
@@ -40,6 +41,8 @@ class ScanActivity2 : AppCompatActivity() {
         textScan = binding.textScan
         btnComplete = binding.completeButton
 
+
+
         // Инициализация API клиента
         apiService = RetrofitClient.getClient().create(ApiService::class.java)
 
@@ -53,6 +56,8 @@ class ScanActivity2 : AppCompatActivity() {
 
         loadItemsFromRequest(requestId)
 
+
+
         barcodeView.decodeContinuous(object : BarcodeCallback {
             override fun barcodeResult(result: BarcodeResult?) {
                 result?.let {
@@ -65,6 +70,7 @@ class ScanActivity2 : AppCompatActivity() {
             }
         })
 
+
         // Обработчик нажатия на кнопку завершения
         btnComplete.setOnClickListener {
             barcodeView.pause() // Останавливаем сканирование
@@ -72,16 +78,62 @@ class ScanActivity2 : AppCompatActivity() {
         }
     }
 
-    // Показать детали отсканированного товара
+    // Показать детали отсканированного товара в диалоговом окне
     private fun showScannedItemDetails(serialNumber: String) {
         val item = itemsToScan.find { it.serial_number == serialNumber }
+
         if (item != null) {
-            val itemInfo = "Товар: ${item.name}, Склад: ${item.warehouse}"
-            Toast.makeText(this, itemInfo, Toast.LENGTH_SHORT).show()
+            // Товар найден в списке на сканирование
+            val itemInfo = "Товар: ${item.name}\nМестоположение: ${item.warehouse}"
+            showDialog("Детали товара", itemInfo, null)
         } else {
-            Toast.makeText(this, "Товар не найден", Toast.LENGTH_SHORT).show()
+            // Товар не найден в списке
+            showMissingItemDialog(serialNumber)
         }
     }
+
+    // Метод для отображения диалогового окна с информацией о товаре
+    private fun showDialog(title: String, message: String, onPositiveAction: (() -> Unit)?) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(title)
+        builder.setMessage(message)
+        builder.setPositiveButton("ОК") { dialog, _ ->
+            onPositiveAction?.invoke()
+            dialog.dismiss()
+        }
+        builder.show()
+    }
+
+    // Метод для отображения диалога с вариантами действий, если товар не найден в списке на сканирование
+    private fun showMissingItemDialog(serialNumber: String) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Товар не найден")
+        builder.setMessage("Товар с серийным номером $serialNumber не найден в списке на сканирование. Что вы хотите сделать?")
+
+        // Вариант оставить товар на месте
+        builder.setPositiveButton("Оставить на месте") { dialog, _ ->
+            Toast.makeText(this, "Товар оставлен на месте", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
+        }
+
+        // Вариант изменить местоположение товара
+        builder.setNegativeButton("Изменить местоположение") { dialog, _ ->
+            // Логика для изменения местоположения (например, можно открыть новую Activity для выбора местоположения)
+            Toast.makeText(this, "Переходим к изменению местоположения", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
+            navigateToChangeLocation(serialNumber) // Метод для изменения местоположения
+        }
+
+        builder.show()
+    }
+
+    // Метод для перехода на экран изменения местоположения товара
+    private fun navigateToChangeLocation(serialNumber: String) {
+        val intent = Intent(this, UpdateItemLocationActivity::class.java)
+        intent.putExtra("SERIAL_NUMBER", serialNumber)
+        startActivity(intent)
+    }
+
 
     // Обновить счетчик сканированных товаров
     private fun updateScanCounter() {
@@ -101,21 +153,24 @@ class ScanActivity2 : AppCompatActivity() {
 
     // Загрузка товаров для заявки с сервера
     private fun loadItemsFromRequest(requestId: String) {
-        apiService.getItemsForRequest(requestId.toInt()).enqueue(object : Callback<List<ItemResponse>> {
+        apiService.getItems(requestId).enqueue(object : Callback<List<ItemResponse>> {
             override fun onResponse(call: Call<List<ItemResponse>>, response: Response<List<ItemResponse>>) {
                 if (response.isSuccessful) {
-                    itemsToScan = response.body() ?: listOf()
-                    Log.d("ScanActivity2", "Загружены товары: $itemsToScan")
-                    updateScanCounter() // Обновляем счетчик после загрузки
+                    val items = response.body() ?: listOf()
+                    // Сохраняем загруженные товары в itemsToScan
+                    itemsToScan = items
+                    Log.d("Items", "Получено товаров: $itemsToScan")
                 } else {
-                    Toast.makeText(this@ScanActivity2, "Ошибка получения товаров", Toast.LENGTH_SHORT).show()
+                    Log.e("Error", "Ошибка получения товаров: ${response.message()}")
                 }
             }
 
+
             override fun onFailure(call: Call<List<ItemResponse>>, t: Throwable) {
-                Toast.makeText(this@ScanActivity2, "Ошибка подключения", Toast.LENGTH_SHORT).show()
+                Log.e("Error", "Ошибка сети: ${t.message}")
             }
         })
+
     }
 
     override fun onResume() {

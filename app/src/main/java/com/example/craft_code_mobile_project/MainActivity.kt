@@ -90,7 +90,8 @@ class MainActivity : AppCompatActivity() {
     fun setupRecyclerView(requestList: List<InventoryRequest>) {
         val adapter = InventoryRequestAdapter(requestList) { request, isCompleted ->
             if (isCompleted) {
-                createPdfReport(request) // передайте объект вашей заявки
+
+                createPdfReport(request)
             } else {
                 // Переход к деталям заявки для незавершенных
                 openInventoryRequestDetails(request)
