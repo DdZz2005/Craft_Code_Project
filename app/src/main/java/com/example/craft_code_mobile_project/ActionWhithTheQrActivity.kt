@@ -75,6 +75,7 @@ class ActionWhithTheQrActivity : AppCompatActivity() {
                             putExtra("ITEM_WAREHOUSE", it.warehouse)
 
                         }
+
                         startActivity(intent)
 
                     }
