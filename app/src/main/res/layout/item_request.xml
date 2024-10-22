@@ -8,12 +8,6 @@
     android:gravity="center_vertical">
 
     <!-- Иконка слева -->
-    <ImageView
-        android:id="@+id/requestIcon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/img_6"
-        android:layout_marginEnd="8dp" />
 
     <!-- Текстовая часть -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,18 +37,26 @@
 
         <TextView
             android:id="@+id/requestDescription"
-            android:layout_width="334dp"
-            android:layout_height="35dp"
+            android:layout_width="278dp"
+            android:layout_height="38dp"
             android:layout_marginStart="4dp"
             android:text="Вам пришла заявка на проведение инвентаризации"
             android:textColor="#5D1E5E"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.474"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/requestDate"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.714" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="49dp"
+            android:layout_height="48dp"
+            app:srcCompat="@drawable/img_15"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="16dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
