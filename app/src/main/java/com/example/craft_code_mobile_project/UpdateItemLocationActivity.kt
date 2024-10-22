@@ -38,7 +38,7 @@ class UpdateItemLocationActivity : AppCompatActivity() {
 
         binding.itemName.text = itemName  // Отображаем имя товара в заголовке
 
-        // Загружаем список складов
+        // Загружаем список складов и настраиваем Spinner
         loadWarehouses()
 
         // Обработчик для кнопки отправки
@@ -47,33 +47,6 @@ class UpdateItemLocationActivity : AppCompatActivity() {
                 updateItemLocation(serialNumber!!, selectedLocation!!, itemName!!)
             } else {
                 Toast.makeText(this, "Выберите местоположение или серийный номер не найден", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
-
-    // Настройка Spinner для выбора локации
-    private fun setupLocationSpinner() {
-        val spinner: Spinner = binding.spinnerLocation
-
-        // Создание адаптера для Spinner с данными из ресурса locations.xml
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.location_list, // Массив из locations.xml
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-        }
-
-        // Установка слушателя для выбора элемента из Spinner
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                selectedLocation = parent.getItemAtPosition(position).toString()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // Не выбрано никакое местоположение
             }
         }
     }
@@ -101,12 +74,13 @@ class UpdateItemLocationActivity : AppCompatActivity() {
         })
     }
 
+    // Метод для загрузки складов с сервера
     private fun loadWarehouses() {
         apiService.getWarehouses().enqueue(object : Callback<List<WarehouseResponse>> {
             override fun onResponse(call: Call<List<WarehouseResponse>>, response: Response<List<WarehouseResponse>>) {
                 if (response.isSuccessful) {
                     val warehouses = response.body() ?: emptyList()
-                    updateLocationSpinner(warehouses) // Обновляем Spinner
+                    setupLocationSpinner(warehouses) // Настраиваем Spinner с полученными складами
                 } else {
                     Toast.makeText(this@UpdateItemLocationActivity, "Ошибка при загрузке складов", Toast.LENGTH_SHORT).show()
                 }
@@ -118,7 +92,8 @@ class UpdateItemLocationActivity : AppCompatActivity() {
         })
     }
 
-    private fun updateLocationSpinner(warehouses: List<WarehouseResponse>) {
+    // Настройка Spinner для выбора локации
+    private fun setupLocationSpinner(warehouses: List<WarehouseResponse>) {
         val warehouseNames = warehouses.map { it.name } // Получаем список названий складов
 
         // Создаем адаптер для Spinner
@@ -142,6 +117,4 @@ class UpdateItemLocationActivity : AppCompatActivity() {
             }
         }
     }
-
-
 }
