@@ -14,54 +14,50 @@
         android:id="@+id/item_name"
         android:layout_width="287dp"
         android:layout_height="61dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="Имя отсканированного элемента"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.678"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.034"
         tools:ignore="MissingConstraints" />
 
     <Spinner
         android:id="@+id/spinner_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="76dp"
         android:entries="@array/location_list"
         android:padding="10dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_name"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="20dp" />
+        tools:layout_editor_absoluteX="42dp" />
 
     <Button
         android:id="@+id/button_send"
         android:layout_width="172dp"
         android:layout_height="46dp"
-        android:layout_marginStart="103dp"
-        android:layout_marginEnd="116dp"
         android:text="Отправить "
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_location"
         app:layout_constraintVertical_bias="0.823"
         tools:ignore="MissingConstraints"
-        />
+        tools:layout_editor_absoluteX="103dp" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="57dp"
         android:layout_height="58dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_location"
         app:layout_constraintEnd_toStartOf="@+id/item_name"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.033"
-        app:srcCompat="@drawable/img_11" />
+        app:layout_constraintVertical_bias="0.18"
+        app:srcCompat="@drawable/img_11"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

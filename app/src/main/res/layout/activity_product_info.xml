@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <!-- Название товара -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Название товара:"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_marginBottom="8dp"/>
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/img_8"
+            tools:layout_editor_absoluteX="290dp"
+            tools:layout_editor_absoluteY="170dp" />
 
         <TextView
             android:id="@+id/itemName"
@@ -25,84 +28,142 @@
             android:text=""/>
 
         <!-- Описание товара -->
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Описание товара:"
-            android:textStyle="bold"
+            android:layout_height="35dp"
+            android:text="Название товара:"
             android:textSize="18sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"/>
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="58dp"
+            tools:layout_editor_absoluteY="333dp" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="35dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/img_7"
+            tools:layout_editor_absoluteX="234dp"
+            tools:layout_editor_absoluteY="86dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="43dp"
+            android:text="Описание товара:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="466dp" />
+
+        <!-- Серийный номер -->
 
         <TextView
             android:id="@+id/itemDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""/>
+            android:text=""
+            tools:layout_editor_absoluteX="245dp"
+            tools:layout_editor_absoluteY="194dp" />
 
-        <!-- Серийный номер -->
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="34dp"
+            android:layout_height="36dp"
+            app:srcCompat="@drawable/img_13"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="466dp" />
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="41dp"
             android:text="Серийный номер:"
-            android:textStyle="bold"
             android:textSize="18sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"/>
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="57dp"
+            tools:layout_editor_absoluteY="269dp" />
+
+        <!-- Местоположение товара -->
 
         <TextView
             android:id="@+id/itemSerialNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""/>
+            android:text=""
+            tools:layout_editor_absoluteX="254dp"
+            tools:layout_editor_absoluteY="269dp" />
 
-        <!-- Местоположение товара -->
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="34dp"
+            android:layout_height="36dp"
+            app:srcCompat="@drawable/img_12"
+            tools:layout_editor_absoluteX="10dp"
+            tools:layout_editor_absoluteY="274dp" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="158dp"
+            android:layout_height="40dp"
             android:text="Компания:"
-            android:textStyle="bold"
             android:textSize="18sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"/>
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="57dp"
+            tools:layout_editor_absoluteY="195dp" />
+
+        <!-- Склад -->
 
         <TextView
             android:id="@+id/itemLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""/>
+            android:text=""
+            tools:layout_editor_absoluteX="141dp"
+            tools:layout_editor_absoluteY="100dp" />
 
-        <!-- Склад -->
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="36dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/img_15"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="200dp" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="163dp"
+            android:layout_height="39dp"
             android:text="Склад:"
-            android:textStyle="bold"
             android:textSize="18sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"/>
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="64dp"
+            tools:layout_editor_absoluteY="411dp" />
+
+        <!-- Ответственный -->
 
         <TextView
             android:id="@+id/itemWarehouse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""/>
+            android:text=""
+            tools:layout_editor_absoluteX="254dp"
+            tools:layout_editor_absoluteY="340dp" />
 
-        <!-- Ответственный -->
+        <!-- Дата регистрации -->
 
         <TextView
             android:id="@+id/itemAssignedTo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""/>
-
-        <!-- Дата регистрации -->
+            android:text=""
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="127dp" />
 
         <TextView
             android:id="@+id/itemRegistrationDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""/>
+            android:text=""
+            tools:layout_editor_absoluteX="254dp"
+            tools:layout_editor_absoluteY="392dp"
+            />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

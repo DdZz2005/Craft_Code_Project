@@ -17,38 +17,69 @@
 
     <TextView
         android:id="@+id/confirmation_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="309dp"
+        android:layout_height="60dp"
         android:gravity="center"
-        android:text="Location Updated"
-        android:textSize="18sp"
+        android:text="Местоположение обновлено"
+        android:textColor="#3E025B"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/new_location"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.676" />
+        app:layout_constraintVertical_bias="0.238" />
 
     <TextView
         android:id="@+id/new_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="282dp"
+        android:layout_height="63dp"
         android:layout_marginTop="140dp"
-        android:text="New Location"
-        android:textSize="24sp"
+        android:text="Новое местоположение"
+        android:textColor="#3E025B"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/link_confirm"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.477" />
 
     <Button
         android:id="@+id/link_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Confirm"
+        android:shadowColor="#673AB7"
+        android:text="Подтверждение "
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toStartOf="@+id/confirmation_message"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_8" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="65dp"
+        android:layout_height="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/new_location"
+        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.372"
+        app:srcCompat="@drawable/img_10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
