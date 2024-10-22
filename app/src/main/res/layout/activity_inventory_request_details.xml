@@ -15,23 +15,25 @@
             android:id="@+id/inventoryRequestTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:text="Заявка на проведение инвентаризации"
-            android:textStyle="bold"
+            android:textColor="#A98005BA"
             android:textSize="20sp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="16dp" />
+            android:textStyle="bold" />
 
         <!-- Приветственное сообщение -->
-        <TextView
-            android:id="@+id/inventoryRequestMessage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Уважаемая Фамилия Имя Отчество, ваш администратор отправил вам заявку на проведение инвентаризации в указанных ниже кабинетах/отделах:"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="16dp" />
 
         <!-- Список кабинетов -->
+
+        <TextView
+            android:id="@+id/inventoryRequestMessage"
+            android:layout_width="305dp"
+            android:layout_height="147dp"
+            android:layout_marginBottom="225dp"
+            android:text="Уважаемая Фамилия Имя Отчество, ваш администратор отправил вам заявку на проведение инвентаризации в указанных ниже кабинетах/отделах:"
+            android:textColor="#CD3E025B"
+            android:textSize="16sp" />
+
         <TextView
             android:id="@+id/inventoryRequestRooms"
             android:layout_width="wrap_content"
@@ -48,7 +50,7 @@
             android:layout_height="wrap_content"
             android:text="Отчёт предоставить до:"
             android:textSize="16sp"
-            android:textColor="@color/black"
+            android:textColor="#3E025B"
             android:layout_marginBottom="16dp" />
 
         <!-- Дата заявки -->
@@ -56,19 +58,19 @@
             android:id="@+id/inventoryRequestDeadline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
             android:text="ДД.ММ.ГГГГ ЧЧ:ММ"
-            android:textSize="16sp"
-            android:textColor="#A1A1A1"
-            android:layout_marginBottom="32dp" />
+            android:textColor="#7A3E025B"
+            android:textSize="16sp" />
 
         <!-- Кнопка для начала -->
         <Button
             android:id="@+id/startInventoryButton"
-            android:layout_width="wrap_content"
+            android:layout_width="176dp"
             android:layout_height="wrap_content"
+            android:backgroundTint="#3E025B"
             android:text="Начать"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/black" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </ScrollView>
